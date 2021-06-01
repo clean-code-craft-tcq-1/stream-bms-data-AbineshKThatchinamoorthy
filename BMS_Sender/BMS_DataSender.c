@@ -21,11 +21,11 @@ Bms_DataTransSts readSensorData_e()
   FILE * SensorIpFile = fopen("./BMS_Sender/SensorData.txt","r");  
   
   if (NULL != SensorIpFile) {
-        for(int cnt = 0;fscanf(file, "%f\t\t%f\n", &TemperatureTemp,&StateOfChargeVal)!=EOF ;cnt++)
+        for(int cnt = 0;fscanf(SensorIpFile, "%f\t\t%f\n", &TemperatureTemp,&StateOfChargeVal)!=EOF ;cnt++)
         {
 
         }		
-	}
+   }
   else {
     printf("File open attempt failed\n");
   }
