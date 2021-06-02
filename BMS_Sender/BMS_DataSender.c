@@ -16,7 +16,7 @@
 #include "BMS_DataSender.h"
 
 /* Funcation declarations */
-Bms_DataTransSts sendDataToConsole_e(float temperatureVal_f, float socVal_f);
+void sendDataToConsole_v(float temperatureVal_f, float socVal_f);
  
 /*---------------------------------------------------------------------------*/
 /*     FUNCTION: readFileData_e()
@@ -40,7 +40,7 @@ BmsTransOpMdSts readFileData_e()
     printf("File Open is SUCCESSFUL !!!\n");
     for(int cnt_i = 0;fscanf(sensorIpFile_p, "%f\t\t%f\n", &temperatureVal_f,&socVal_f)!=EOF ;cnt_i++)
     {
-        sendDataToConsole_e(temperatureVal_f, socVal_f);
+        sendDataToConsole_v(temperatureVal_f, socVal_f);
     }
     readSts_e   = OP_MODE_STATUS_SUCCESSFUL;
     streamSts_e = OP_MODE_STATUS_SUCCESSFUL;
@@ -62,9 +62,27 @@ BmsTransOpMdSts readFileData_e()
  *
  *     \returns  Bms_DataTransSts - Status of the Stream Operation
  *//*------------------------------------------------------------------------*/
-Bms_DataTransSts sendDataToConsole_e(float temperatureVal_f, float socVal_f)
+void sendDataToConsole_v(float temperatureVal_f, float socVal_f)
 {
   printf("%f %f\n", temperatureVal_f,socVal_f);
+}
+
+/*---------------------------------------------------------------------------*/
+/*     FUNCTION: initiateDataStream_v()
+ */
+/*!    \brief    Initiate the Stream operation is user request is active
+ *
+ *     \param    boolean streamDataReq_b - Stream request from User
+ *                       0 - Not requested
+ *                       1 - Stream requested
+ *     \returns  void
+ *//*------------------------------------------------------------------------*/
+void initiateStream_v(boolean streamDataReq_b)
+{
+ if(streamDataReq_b)
+ {
+   readFileData_e();
+ }
 }
 
 /* EOF*/
