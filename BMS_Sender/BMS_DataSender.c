@@ -15,8 +15,6 @@
 /* INCLUSIONS */
 #include <stdio.h>
 
-BMSParams_t battParams_e;
-
 /*---------------------------------------------------------------------------*/
 /*     FUNCTION: readSensorData_e()
  */
@@ -28,21 +26,23 @@ BMSParams_t battParams_e;
  *//*------------------------------------------------------------------------*/
 Bms_DataTransSts readSensorData_e()
 {
-  Bms_DataTransSts readSts_e = STATUS_FAILED;
+  Bms_DataTransSts readSts_e   = OP_MODE_STATUS_INIT;
+  Bms_DataTransSts streamSts_e = OP_MODE_STATUS_INIT;
  
-  FILE * sensorIpFile = fopen("./BMS_Sender/SensorData.txt","r");  
+  FILE * sensorIpFile_p = fopen("./BMS_Sender/SensorData.txt","r");  
   
-  if (NULL != SensorIpFile) {
+  if (NULL != sensorIpFile_p) {
     printf("File Open is SUCCESSFUL !!!\n");
-    for(int cnt_i = 0;fscanf(sensorIpFile, "%f\t\t%f\n", &temperatureVal,&socVal)!=EOF ;cnt_i++)
+    for(int cnt_i = 0;fscanf(sensorIpFile_p, "%f\t\t%f\n", &temperatureVal,&socVal)!=EOF ;cnt_i++)
     {
-        battParams_e.bmsTempVal_f[cnt_i] = temperatureVal;
-        battParams_e.bmsSOCVal_f[cnt_i]  = socVal;
+        sendDataToConsole_e(temperatureVal, socVal);
     }
-    readSts_e = STARUS_SUCCESSFUL;
+    readSts_e   = STATUS_SUCCESSFUL;
+    streamSts_e = STATUS_SUCCESSFUL;
    }
   else {
     printf("File Open is FAILED !!!\n Please check the validity of the PATH or FILE.\n");
+    readSts_e = OP_MODE_STATUS_FAILED;
   }
   
   return readSts_e;
@@ -57,19 +57,9 @@ Bms_DataTransSts readSensorData_e()
  *
  *     \returns  Bms_DataTransSts - Status of the Stream Operation
  *//*------------------------------------------------------------------------*/
-Bms_DataTransSts sendDataToConsole_e()
+Bms_DataTransSts sendDataToConsole_e(float temperatureVal_f, float socVal_f)
 {
-  Bms_DataTransSts streamSts_e = STATUS_FAILED;
-  int dataLen_i = sizeof(battParams_e.bmsTempVal_f) / sizeof(float)
-    
-  for(int index_i=0; index_i < dataLen_i; index_i++)
-  {
-     printf("Dataset %d \n", index_i);
-     printf("Temperature : %f\n", battParams_e.bmsTempVal_f[index_i]);
-     printf("State of Charge : %f\n", battParams_e.bmsSOCVal_f[index_i]);
-  }
-  
-  return streamSts_e;
+  printf("%f %f\n", temperatureVal_f,socVal_f);
 }
 
 /* EOF*/
