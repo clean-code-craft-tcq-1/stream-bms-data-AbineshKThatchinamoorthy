@@ -18,13 +18,9 @@
 /* Type definitions */
 typedef enum
 {
-	STATUS_FAILED,
-	STARUS_SUCCESSFUL
-}Bms_DataTransSts;
-
-typedef struct {
-    float bmsTempVal_f[];  
-    float bmsSOCVal_f[];
-}BMSParams_t;
+   OP_MODE_STATUS_INIT,
+   OP_MODE_STATUS_FAILED,
+   OP_MODE_STATUS_SUCCESSFUL
+}BmsTransOpMdSts;
 
 Bms_DataTransSts readSensorData_e(void);
