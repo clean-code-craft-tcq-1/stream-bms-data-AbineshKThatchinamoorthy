@@ -24,8 +24,8 @@ typedef enum
 
 typedef struct
 {
-   BmsTransOpMdSts_t readSts_e,
-   BmsTransOpMdSts_t streamSts_e
+   BmsTransOpMdSts_t readSts_e;
+   BmsTransOpMdSts_t streamSts_e;
 }StreamOpSts_t;
 
 
