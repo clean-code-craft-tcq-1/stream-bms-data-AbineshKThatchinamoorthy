@@ -74,7 +74,7 @@ void sendDataToConsole_v(float temperatureVal_f, float socVal_f)
  *                       1 - Stream requested
  *     \returns  void
  *//*------------------------------------------------------------------------*/
-void initiateStream_v(boolean streamDataReq_b)
+void initiateStream_v(bool streamDataReq_b)
 {
  if(streamDataReq_b)
  {
