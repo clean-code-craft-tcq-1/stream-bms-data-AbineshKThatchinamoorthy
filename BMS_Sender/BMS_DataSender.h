@@ -20,7 +20,14 @@ typedef enum
    OP_MODE_STATUS_INIT,
    OP_MODE_STATUS_FAILED,
    OP_MODE_STATUS_SUCCESSFUL
-}BmsTransOpMdSts;
+}BmsTransOpMdSts_t;
+
+typedef struct
+{
+   BmsTransOpMdSts readSts_e,
+   BmsTransOpMdSts streamSts_e
+}StreamOpSts_t;
+
 
 
 /* Function declarations */
