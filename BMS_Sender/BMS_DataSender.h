@@ -33,5 +33,5 @@ typedef struct
 
 /* Function declarations */
 StreamOpSts_t initiateStream_e(bool streamDataReq_b);
-StreamOpSts_t readFileData_e(char[100] filePath);
+StreamOpSts_t readFileData_e(char *filePath_p);
 BmsTransOpMdSts_t sendDataToConsole_e(float temperatureVal_f, float socVal_f);
