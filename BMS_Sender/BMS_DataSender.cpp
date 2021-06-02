@@ -27,7 +27,7 @@ TEST_CASE("validate the case that the User has not requested the Stream operatio
         streamOpSts_s.streamSts_e = OP_MODE_STATUS_INIT;
 	streamOpSts_s.streamedDataLen_i = 0;
 	
-	streamOpSts_s = initiateStream_v(0);
+	streamOpSts_s = initiateStream_e(0);
 	
   	REQUIRE(streamOpSts_s.readSts_e   == OP_MODE_STATUS_INIT);
 	REQUIRE(streamOpSts_s.streamSts_e   == OP_MODE_STATUS_INIT);
@@ -41,7 +41,7 @@ TEST_CASE("validate the case that the User has requested the Stream operation ")
         streamOpSts_s.streamSts_e = OP_MODE_STATUS_INIT;
 	streamOpSts_s.streamedDataLen_i = 0;
 	
-	streamOpSts_s = initiateStream_v(1);
+	streamOpSts_s = initiateStream_e(1);
 	
   	REQUIRE(streamOpSts_s.readSts_e   == OP_MODE_STATUS_SUCCESSFUL);
 	REQUIRE(streamOpSts_s.streamSts_e   == OP_MODE_STATUS_SUCCESSFUL);
