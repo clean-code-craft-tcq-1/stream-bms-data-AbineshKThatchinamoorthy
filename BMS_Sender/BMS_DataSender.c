@@ -63,9 +63,11 @@ Bms_DataTransSts sendDataToConsole_e()
   int dataLen_i = sizeof(battParams_e.bmsTempVal_f) / sizeof(float)
     
   for(int index_i=0; index_i < dataLen_i; index_i++)
-	{
-		printf("%f\t\t %f\n", battParams_e.bmsTempVal_f[index_i],battParams_e.bmsSOCVal_f[index_i]);
-	}
+  {
+     printf("Dataset %d \n", index_i);
+     printf("Temperature : %f\n", battParams_e.bmsTempVal_f[index_i]);
+     printf("State of Charge : %f\n", battParams_e.bmsSOCVal_f[index_i]);
+  }
   
   return streamSts_e;
 }
