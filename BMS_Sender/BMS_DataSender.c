@@ -24,13 +24,13 @@
  *
  *     \returns  BmsTransOpMdSts - Status of the Read Operation
  *//*------------------------------------------------------------------------*/
-StreamOpSts_t readFileData_e(char *filePath_p)
+StreamOpSts_t readFileData_e(char const* filePath_p)
 {
   float socVal_f;
   float temperatureVal_f;
   StreamOpSts_t streamOpSts_s;
  
-  FILE * sensorIpFile_p = fopen(*filePath_p,"r");  
+  FILE * sensorIpFile_p = fopen(filePath_p,"r");  
  
   streamOpSts_s.readSts_e   = OP_MODE_STATUS_INIT;
   streamOpSts_s.streamSts_e = OP_MODE_STATUS_INIT;
