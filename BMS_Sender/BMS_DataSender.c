@@ -83,7 +83,7 @@ BmsTransOpMdSts_t sendDataToConsole_e(float temperatureVal_f, float socVal_f)
 StreamOpSts_t initiateStream_e(bool streamDataReq_b)
 {
  StreamOpSts_t streamOpSts_s;
- char filePath[100] = "./BMS_Sender/SensorData.txt"
+ char filePath[100] = "./BMS_Sender/SensorData.txt";
  
  	streamOpSts_s.readSts_e   = OP_MODE_STATUS_INIT;
   streamOpSts_s.streamSts_e = OP_MODE_STATUS_INIT;
