@@ -14,9 +14,6 @@
 
 /* Inclusions */
 #include "BMS_DataSender.h"
-
-/* Funcation declarations */
-void sendDataToConsole_v(float temperatureVal_f, float socVal_f);
  
 /*---------------------------------------------------------------------------*/
 /*     FUNCTION: readFileData_e()
