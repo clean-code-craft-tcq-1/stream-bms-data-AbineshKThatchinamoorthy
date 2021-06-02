@@ -23,11 +23,11 @@ TEST_CASE("validate the Send operation to console function - sendDataToConsole_e
 	
 	BmsTransOpMdSts_t streamOpSts_e;
 	
-        streamSts_e = OP_MODE_STATUS_INIT;
+        streamOpSts_e = OP_MODE_STATUS_INIT;
 	
-	streamSts_e = sendDataToConsole_e();
+	streamOpSts_e = sendDataToConsole_e();
 	
-	REQUIRE(streamSts_e   == OP_MODE_STATUS_SUCCESSFUL);
+	REQUIRE(streamOpSts_e   == OP_MODE_STATUS_SUCCESSFUL);
 }
 
 TEST_CASE("validate the case that the User has not requested the Stream operation ") {
