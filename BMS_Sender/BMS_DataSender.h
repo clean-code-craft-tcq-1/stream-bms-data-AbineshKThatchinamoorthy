@@ -15,11 +15,16 @@
 /* MACROS */
 
 
-/* Enums */
+/* Type definitions */
 typedef enum
 {
 	STATUS_FAILED,
 	STARUS_SUCCESSFUL
 }Bms_DataTransSts;
+
+typedef struct {
+    int bmsTempVal_i[50];  
+    int bmsSOCVal_i[50];
+}BMSParams_t;
 
 Bms_DataTransSts readSensorData_e(void);
