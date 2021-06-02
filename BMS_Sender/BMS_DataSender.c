@@ -34,6 +34,7 @@ StreamOpSts_t readFileData_e(char const* filePath_p)
  
   streamOpSts_s.readSts_e   = OP_MODE_STATUS_INIT;
   streamOpSts_s.streamSts_e = OP_MODE_STATUS_INIT;
+  streamOpSts_s.streamedDataLen_i  = 0;
   
   if (NULL != sensorIpFile_p) {
     printf("File Open is SUCCESSFUL !!!\n");
@@ -84,10 +85,10 @@ StreamOpSts_t initiateStream_e(bool streamDataReq_b)
 {
  StreamOpSts_t streamOpSts_s;
  char filePath[100] = "./BMS_Sender/SensorData.txt";
- 
- 	streamOpSts_s.readSts_e   = OP_MODE_STATUS_INIT;
+  
+  streamOpSts_s.readSts_e   = OP_MODE_STATUS_INIT;
   streamOpSts_s.streamSts_e = OP_MODE_STATUS_INIT;
- 	streamOpSts_s.streamedDataLen_i = 0;
+  streamOpSts_s.streamedDataLen_i = 0;
  
  if(streamDataReq_b)
  {
