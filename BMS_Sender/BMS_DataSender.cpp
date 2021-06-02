@@ -25,7 +25,7 @@ TEST_CASE("validate the Send operation to console function - sendDataToConsole_e
 	
         streamOpSts_e = OP_MODE_STATUS_INIT;
 	
-	streamOpSts_e = sendDataToConsole_e();
+	streamOpSts_e = sendDataToConsole_e(40, 35);
 	
 	REQUIRE(streamOpSts_e   == OP_MODE_STATUS_SUCCESSFUL);
 }
