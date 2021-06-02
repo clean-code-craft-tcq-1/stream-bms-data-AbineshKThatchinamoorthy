@@ -23,5 +23,7 @@ typedef enum
 }BmsTransOpMdSts;
 
 
-/* Funcation declarations */
+/* Function declarations */
+void initiateStream_v(boolean streamDataReq_b);
 BmsTransOpMdSts readFileData_e(void);
+void sendDataToConsole_v(float temperatureVal_f, float socVal_f);
