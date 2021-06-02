@@ -84,6 +84,10 @@ StreamOpSts_t initiateStream_e(bool streamDataReq_b)
 {
  StreamOpSts_t streamOpSts_s;
  
+ 	streamOpSts_s.readSts_e   = OP_MODE_STATUS_INIT;
+  streamOpSts_s.streamSts_e = OP_MODE_STATUS_INIT;
+ 	streamOpSts_s.streamedDataLen_i = 0;
+ 
  if(streamDataReq_b)
  {
    streamOpSts_s = readFileData_e();
