@@ -15,6 +15,7 @@
 #include <stdio.h>
 
 /* Type definitions */
+/* Enum for Operational Status */
 typedef enum
 {
    OP_MODE_STATUS_INIT,
@@ -22,6 +23,7 @@ typedef enum
    OP_MODE_STATUS_SUCCESSFUL
 }BmsTransOpMdSts_t;
 
+/*Structure which contains the result of the operation */
 typedef struct
 {
    BmsTransOpMdSts_t readSts_e;
