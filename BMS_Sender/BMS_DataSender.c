@@ -82,7 +82,8 @@ BmsTransOpMdSts_t sendDataToConsole_e(float temperatureVal_f, float socVal_f)
  *//*------------------------------------------------------------------------*/
 void initiateStream_v(bool streamDataReq_b)
 {
- StreamOpSts_t streamOpSts_s = {0,0,0};
+ StreamOpSts_t streamOpSts_s;
+ 
  if(streamDataReq_b)
  {
    streamOpSts_s = readFileData_e();
