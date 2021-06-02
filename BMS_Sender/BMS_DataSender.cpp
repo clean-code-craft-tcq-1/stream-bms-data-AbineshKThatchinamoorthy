@@ -19,6 +19,17 @@ TEST_CASE("validate the Read operation function - readFileData_e") {
 	REQUIRE(streamOpSts_s.streamedDataLen_i   == 50);
 }
 
+TEST_CASE("validate the Send operation to console function - sendDataToConsole_e") {
+	
+	BmsTransOpMdSts_t streamOpSts_e;
+	
+        streamSts_e = OP_MODE_STATUS_INIT;
+	
+	streamSts_e = sendDataToConsole_e();
+	
+	REQUIRE(streamSts_e   == OP_MODE_STATUS_SUCCESSFUL);
+}
+
 TEST_CASE("validate the case that the User has not requested the Stream operation ") {
 	
 	StreamOpSts_t streamOpSts_s;
