@@ -37,12 +37,11 @@ StreamOpSts_t readFileData_e()
   
   if (NULL != sensorIpFile_p) {
     printf("File Open is SUCCESSFUL !!!\n");
-    for(int cnt_i = 0;fscanf(sensorIpFile_p, "%f\t\t%f\n", &temperatureVal_f,&socVal_f)!=EOF ;cnt_i++)
+    for(streamOpSts_s.streamedDataLen_i  = 0;fscanf(sensorIpFile_p, "%f\t\t%f\n", &temperatureVal_f,&socVal_f)!=EOF ;streamOpSts_s.streamedDataLen_i ++)
     {
-        streamOpSts_s.streamSts_e = sendDataToConsole_v(temperatureVal_f, socVal_f);
+        streamOpSts_s.streamSts_e = sendDataToConsole_e(temperatureVal_f, socVal_f);
     }
     streamOpSts_s.readSts_e   = OP_MODE_STATUS_SUCCESSFUL;
-    streamOpSts_s.streamedDataLen_i = cnt_i;
    }
   else {
     printf("File Open is FAILED !!!\n Please check the validity of the PATH or FILE.\n");
@@ -83,7 +82,7 @@ BmsTransOpMdSts_t sendDataToConsole_e(float temperatureVal_f, float socVal_f)
  *//*------------------------------------------------------------------------*/
 void initiateStream_v(bool streamDataReq_b)
 {
- StreamOpSts_t streamOpSts_s = {0};
+ StreamOpSts_t streamOpSts_s = {0,0,0};
  if(streamDataReq_b)
  {
    streamOpSts_s = readFileData_e();
