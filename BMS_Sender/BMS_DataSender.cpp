@@ -3,6 +3,6 @@
 
 TEST_CASE("validate the File Read Operation ") {
 	
-	initiateStream_v(TRUE);
+	initiateStream_v(1);
 
 }
