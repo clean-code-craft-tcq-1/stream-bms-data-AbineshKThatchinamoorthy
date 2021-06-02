@@ -12,20 +12,25 @@
 /*********************************************************************************/
 
 
-/* INCLUSIONS */
-#include <stdio.h>
+/* Inclusions */
 #include "BMS_DataSender.h"
+
+/* Funcation declarations */
+Bms_DataTransSts sendDataToConsole_e(float temperatureVal_f, float socVal_f);
+ 
 /*---------------------------------------------------------------------------*/
-/*     FUNCTION: readSensorData_e()
+/*     FUNCTION: readFileData_e()
  */
 /*!    \brief    Reads & Stores the BMS sensor data from SensorData.txt file
  *
  *     \param    NIL
  *
- *     \returns  Bms_DataTransSts - Status of the Read Operation
+ *     \returns  BmsTransOpMdSts - Status of the Read Operation
  *//*------------------------------------------------------------------------*/
-BmsTransOpMdSts readSensorData_e()
+BmsTransOpMdSts readFileData_e()
 {
+  float socVal_f;
+  float temperatureVal_f;
   BmsTransOpMdSts readSts_e   = OP_MODE_STATUS_INIT;
   BmsTransOpMdSts streamSts_e = OP_MODE_STATUS_INIT;
  
@@ -33,12 +38,12 @@ BmsTransOpMdSts readSensorData_e()
   
   if (NULL != sensorIpFile_p) {
     printf("File Open is SUCCESSFUL !!!\n");
-    for(int cnt_i = 0;fscanf(sensorIpFile_p, "%f\t\t%f\n", &temperatureVal,&socVal)!=EOF ;cnt_i++)
+    for(int cnt_i = 0;fscanf(sensorIpFile_p, "%f\t\t%f\n", &temperatureVal_f,&socVal_f)!=EOF ;cnt_i++)
     {
-        sendDataToConsole_e(temperatureVal, socVal);
+        sendDataToConsole_e(temperatureVal_f, socVal_f);
     }
-    readSts_e   = STATUS_SUCCESSFUL;
-    streamSts_e = STATUS_SUCCESSFUL;
+    readSts_e   = OP_MODE_STATUS_SUCCESSFUL;
+    streamSts_e = OP_MODE_STATUS_SUCCESSFUL;
    }
   else {
     printf("File Open is FAILED !!!\n Please check the validity of the PATH or FILE.\n");
@@ -46,7 +51,7 @@ BmsTransOpMdSts readSensorData_e()
   }
   
   return readSts_e;
-}
+}/* EO readFileData_e */
 
 /*---------------------------------------------------------------------------*/
 /*     FUNCTION: sendDataToConsole_e()
