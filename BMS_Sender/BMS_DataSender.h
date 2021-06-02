@@ -23,8 +23,8 @@ typedef enum
 }Bms_DataTransSts;
 
 typedef struct {
-    int bmsTempVal_i[50];  
-    int bmsSOCVal_i[50];
+    float bmsTempVal_f[];  
+    float bmsSOCVal_f[];
 }BMSParams_t;
 
 Bms_DataTransSts readSensorData_e(void);
