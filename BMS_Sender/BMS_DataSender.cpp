@@ -7,16 +7,33 @@
 TEST_CASE("validate the Read operation function - readFileData_e") {
 	
 	StreamOpSts_t streamOpSts_s;
+	char filePath[100] = "./BMS_Sender/SensorData.txt";
 	
 	streamOpSts_s.readSts_e   = OP_MODE_STATUS_INIT;
         streamOpSts_s.streamSts_e = OP_MODE_STATUS_INIT;
 	streamOpSts_s.streamedDataLen_i = 0;
 	
-	streamOpSts_s = readFileData_e();
+	streamOpSts_s = readFileData_e(filePath);
 	
   	REQUIRE(streamOpSts_s.readSts_e   == OP_MODE_STATUS_SUCCESSFUL);
 	REQUIRE(streamOpSts_s.streamSts_e   == OP_MODE_STATUS_SUCCESSFUL);
 	REQUIRE(streamOpSts_s.streamedDataLen_i   == 50);
+}
+
+TEST_CASE("validate the Read operation function with Invalid File path - readFileData_e") {
+	
+	StreamOpSts_t streamOpSts_s;
+	char filePath[100];
+	
+	streamOpSts_s.readSts_e   = OP_MODE_STATUS_INIT;
+        streamOpSts_s.streamSts_e = OP_MODE_STATUS_INIT;
+	streamOpSts_s.streamedDataLen_i = 0;
+	
+	streamOpSts_s = readFileData_e(filePath);
+	
+  	REQUIRE(streamOpSts_s.readSts_e   == OP_MODE_STATUS_FAILED);
+	REQUIRE(streamOpSts_s.streamSts_e   == OP_MODE_STATUS_INIT);
+	REQUIRE(streamOpSts_s.streamedDataLen_i   == 0);
 }
 
 TEST_CASE("validate the Send operation to console function - sendDataToConsole_e") {
