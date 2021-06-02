@@ -26,6 +26,7 @@ typedef struct
 {
    BmsTransOpMdSts_t readSts_e;
    BmsTransOpMdSts_t streamSts_e;
+   int streamedDataLen_i;
 }StreamOpSts_t;
 
 
