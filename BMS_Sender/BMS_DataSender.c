@@ -39,10 +39,10 @@ StreamOpSts_t readFileData_e()
     printf("File Open is SUCCESSFUL !!!\n");
     for(int cnt_i = 0;fscanf(sensorIpFile_p, "%f\t\t%f\n", &temperatureVal_f,&socVal_f)!=EOF ;cnt_i++)
     {
-        sendDataToConsole_v(temperatureVal_f, socVal_f);
+        streamOpSts_s.streamSts_e = sendDataToConsole_v(temperatureVal_f, socVal_f);
     }
     streamOpSts_s.readSts_e   = OP_MODE_STATUS_SUCCESSFUL;
-    streamOpSts_s.streamSts_e = OP_MODE_STATUS_SUCCESSFUL;
+    streamOpSts_s.streamedDataLen_i = cnt_i;
    }
   else {
     printf("File Open is FAILED !!!\n Please check the validity of the PATH or FILE.\n");
@@ -59,12 +59,17 @@ StreamOpSts_t readFileData_e()
  *
  *     \param    NIL
  *
- *     \returns  Bms_DataTransSts - Status of the Stream Operation
+ *     \returns  BmsTransOpMdSts_t - Status of the Stream Operation
  *//*------------------------------------------------------------------------*/
-void sendDataToConsole_v(float temperatureVal_f, float socVal_f)
+BmsTransOpMdSts_t sendDataToConsole_e(float temperatureVal_f, float socVal_f)
 {
+  BmsTransOpMdSts_t streamSts_e;
+ 
   printf("%f %f\n", temperatureVal_f,socVal_f);
-}
+  streamSts_e = OP_MODE_STATUS_SUCCESSFUL;/* There could be no failure when sending to console */
+ 
+  return streamSts_e;
+}/* EO sendDataToConsole_e */
 
 /*---------------------------------------------------------------------------*/
 /*     FUNCTION: initiateDataStream_v()
@@ -78,10 +83,12 @@ void sendDataToConsole_v(float temperatureVal_f, float socVal_f)
  *//*------------------------------------------------------------------------*/
 void initiateStream_v(bool streamDataReq_b)
 {
+ StreamOpSts_t streamOpSts_s = {0};
  if(streamDataReq_b)
  {
-   readFileData_e();
+   streamOpSts_s = readFileData_e();
  }
+ return streamOpSts_s;
 }
 
 /* EOF*/
