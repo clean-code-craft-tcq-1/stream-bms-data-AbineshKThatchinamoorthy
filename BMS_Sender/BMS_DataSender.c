@@ -28,10 +28,11 @@ BmsTransOpMdSts readFileData_e()
 {
   float socVal_f;
   float temperatureVal_f;
-  BmsTransOpMdSts readSts_e   = OP_MODE_STATUS_INIT;
-  BmsTransOpMdSts streamSts_e = OP_MODE_STATUS_INIT;
+  StreamOpSts_t streamOpSts_s;
  
   FILE * sensorIpFile_p = fopen("./BMS_Sender/SensorData.txt","r");  
+  streamOpSts_s.readSts_e   = OP_MODE_STATUS_INIT;
+  streamOpSts_s.streamSts_e = OP_MODE_STATUS_INIT;
   
   if (NULL != sensorIpFile_p) {
     printf("File Open is SUCCESSFUL !!!\n");
@@ -39,12 +40,12 @@ BmsTransOpMdSts readFileData_e()
     {
         sendDataToConsole_v(temperatureVal_f, socVal_f);
     }
-    readSts_e   = OP_MODE_STATUS_SUCCESSFUL;
-    streamSts_e = OP_MODE_STATUS_SUCCESSFUL;
+    streamOpSts_s.readSts_e   = OP_MODE_STATUS_SUCCESSFUL;
+    streamOpSts_s.streamSts_e = OP_MODE_STATUS_SUCCESSFUL;
    }
   else {
     printf("File Open is FAILED !!!\n Please check the validity of the PATH or FILE.\n");
-    readSts_e = OP_MODE_STATUS_FAILED;
+    streamOpSts_s.readSts_e = OP_MODE_STATUS_FAILED;
   }
   
   return readSts_e;
