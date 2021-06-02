@@ -14,7 +14,7 @@
 
 /* INCLUSIONS */
 #include <stdio.h>
-
+#include "BMS_DataSender.h"
 /*---------------------------------------------------------------------------*/
 /*     FUNCTION: readSensorData_e()
  */
