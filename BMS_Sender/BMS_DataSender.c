@@ -24,13 +24,13 @@
  *
  *     \returns  BmsTransOpMdSts - Status of the Read Operation
  *//*------------------------------------------------------------------------*/
-StreamOpSts_t readFileData_e()
+StreamOpSts_t readFileData_e(char[100] filePath)
 {
   float socVal_f;
   float temperatureVal_f;
   StreamOpSts_t streamOpSts_s;
  
-  FILE * sensorIpFile_p = fopen("./BMS_Sender/SensorData.txt","r");  
+  FILE * sensorIpFile_p = fopen(filePath,"r");  
  
   streamOpSts_s.readSts_e   = OP_MODE_STATUS_INIT;
   streamOpSts_s.streamSts_e = OP_MODE_STATUS_INIT;
@@ -83,6 +83,7 @@ BmsTransOpMdSts_t sendDataToConsole_e(float temperatureVal_f, float socVal_f)
 StreamOpSts_t initiateStream_e(bool streamDataReq_b)
 {
  StreamOpSts_t streamOpSts_s;
+ char[100] filePath = "./BMS_Sender/SensorData.txt"
  
  	streamOpSts_s.readSts_e   = OP_MODE_STATUS_INIT;
   streamOpSts_s.streamSts_e = OP_MODE_STATUS_INIT;
@@ -90,7 +91,7 @@ StreamOpSts_t initiateStream_e(bool streamDataReq_b)
  
  if(streamDataReq_b)
  {
-   streamOpSts_s = readFileData_e();
+   streamOpSts_s = readFileData_e(filePath);
  }
  return streamOpSts_s;
 } /* EO initiateStream_e */
