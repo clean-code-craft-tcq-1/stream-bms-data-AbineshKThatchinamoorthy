@@ -24,10 +24,10 @@
  *
  *     \returns  Bms_DataTransSts - Status of the Read Operation
  *//*------------------------------------------------------------------------*/
-Bms_DataTransSts readSensorData_e()
+BmsTransOpMdSts readSensorData_e()
 {
-  Bms_DataTransSts readSts_e   = OP_MODE_STATUS_INIT;
-  Bms_DataTransSts streamSts_e = OP_MODE_STATUS_INIT;
+  BmsTransOpMdSts readSts_e   = OP_MODE_STATUS_INIT;
+  BmsTransOpMdSts streamSts_e = OP_MODE_STATUS_INIT;
  
   FILE * sensorIpFile_p = fopen("./BMS_Sender/SensorData.txt","r");  
   
