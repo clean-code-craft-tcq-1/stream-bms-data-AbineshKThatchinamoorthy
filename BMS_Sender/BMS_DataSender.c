@@ -71,16 +71,16 @@ BmsTransOpMdSts_t sendDataToConsole_e(float temperatureVal_f, float socVal_f)
 }/* EO sendDataToConsole_e */
 
 /*---------------------------------------------------------------------------*/
-/*     FUNCTION: initiateDataStream_v()
+/*     FUNCTION: initiateStream_e()
  */
 /*!    \brief    Initiate the Stream operation is user request is active
  *
  *     \param    boolean streamDataReq_b - Stream request from User
  *                       0 - Not requested
  *                       1 - Stream requested
- *     \returns  void
+ *     \returns  StreamOpSts_t - Final Status of Stream Operation
  *//*------------------------------------------------------------------------*/
-void initiateStream_v(bool streamDataReq_b)
+StreamOpSts_t initiateStream_e(bool streamDataReq_b)
 {
  StreamOpSts_t streamOpSts_s;
  
@@ -89,6 +89,6 @@ void initiateStream_v(bool streamDataReq_b)
    streamOpSts_s = readFileData_e();
  }
  return streamOpSts_s;
-}
+} /* EO initiateStream_e */
 
 /* EOF*/
