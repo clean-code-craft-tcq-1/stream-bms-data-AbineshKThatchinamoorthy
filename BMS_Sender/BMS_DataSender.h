@@ -11,9 +11,8 @@
 *\n*/
 /*********************************************************************************/
 
-
-/* MACROS */
-
+/* Inclusions */
+#include <stdio.h>
 
 /* Type definitions */
 typedef enum
@@ -23,4 +22,6 @@ typedef enum
    OP_MODE_STATUS_SUCCESSFUL
 }BmsTransOpMdSts;
 
-Bms_DataTransSts readSensorData_e(void);
+
+/* Funcation declarations */
+BmsTransOpMdSts readFileData_e(void);
