@@ -16,8 +16,6 @@ jobs:
     - name: build_sx
       run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker BMS_Sender/*.c*
       
-    - name: build_tx
-      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker receiver/*.c*
       
     - name: run
       run: ./testchecker
