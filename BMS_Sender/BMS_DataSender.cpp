@@ -3,6 +3,7 @@
 
 #include "../test/catch.hpp"
 #include "BMS_DataSender.h"
+#include "receiver.h"
 
 TEST_CASE("validate the Read operation function - readFileData_e") {
 	
