@@ -31,6 +31,7 @@ TEST_CASE("validate the Read operation function with Invalid File path - readFil
 	streamOpSts_s.streamedDataLen_i = 0;
 	
 	streamOpSts_s = readFileData_e(filePath);
+	receiver();
 	
   	REQUIRE(streamOpSts_s.readSts_e   == OP_MODE_STATUS_FAILED);
 	REQUIRE(streamOpSts_s.streamSts_e   == OP_MODE_STATUS_INIT);
