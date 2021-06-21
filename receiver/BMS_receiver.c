@@ -1,8 +1,12 @@
 #include "BMS_receiver.h"
 #include <stdio.h>
 
-#define lengthofParm 50
+#define datalen 50
+
 void GetValue(char *valuefromsender_get, float *tempValue);
+void calculateMinValue(float *paramValue, float *paramValueMin);
+void calculateMaxValue(float *paramValue, float *paramValueMax);'
+void _ReadReceiver();
 
 void ReadData(char *DatafromConsole)
 {
@@ -35,7 +39,53 @@ void GetValue(char *_getvalue, float *Value_)
     printf("Paramter value = %f\n", Value_[parNum]); 
 
 }
-                      
+
+void _ReadReceiver()
+{
+  char DatafromConsole[datalen];
+  float paramMin[datalen] = {TemperatureMin, SocMin};
+  float paramMax[datalen] = {TemperatureMax,SocMAX };
+  int paramSetCounter = 0;
+  /* Reading the input stream */
+  for (paramSetCounter; paramSetCounter < NoOfParamterSet; paramSetCounter++) {
+    
+    /* Read one input set if the read is successful process parameters further*/
+    bool IsOk = ReadData(DatafromConsole);
+    if (IsOk)
+    {
+      
+      float Value_[datalen] ;
+      GetValue(DatafromConsole, Value_);
+     
+      for (int parameterCount = 0; parameterCount< datalen; parameterCount++) {
+        calculateMinValue(&Value_[parameterCount], &paramMin[parameterCount]);
+        calculateMaxValue(&Value_[parameterCount], &paramMax[parameterCount]);
+    }
+      printf(" Minumum Temperature : %f, Minimum SOC : %f \n ", paramMin[Temperature], paramMin[SOC]);
+      printf(" Maximum Temperature : %f, Maximum SOC : %f \n ", paramMax[Temperature], paramMax[SOC]);
+    }
+
+  }
+  
+}
+
+void calculateMinValue(float *paramValue, float *paramValueMin) {
+   
+   
+    if (*paramValueMin > *paramValue)
+    {
+      *paramValueMin = *paramValue;
+
+    }
+}
+
+void calculateMaxValue(float *paramValue, float *paramValueMax) {
+ 
+  if (*paramValueMax < *paramValue)
+  {
+    *paramValueMax = *paramValue;
+  }
+}                      
  int main()
  {
         
