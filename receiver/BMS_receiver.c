@@ -52,7 +52,6 @@ void getvalueFromsender(char *_getvalue, float *Value_)
                       
  int main()
  {
-         char *s = "hello receiver";
-         ReadData();
+        
          return 0;
  }
