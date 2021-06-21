@@ -1,7 +1,15 @@
 #include "BMS_receiver.h"
 #include <stdio.h>
-int receiver()
+
+
+void ReadData(char *DatafromConsole)
 {
-        printf("Hello world!\n");
-        return 0;
+        if(DatafromConsole!=NULL)
+        {
+                scanf(%s",DatafromConsole);
+                      
+        }
 }
+                      
+ int main()
+ {return 0;}
