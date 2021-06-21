@@ -1,16 +1,19 @@
 #include "BMS_receiver.h"
 #include <stdio.h>
 
-static int array_temp[10];
-static int array_soc[10];
-static char data[500];
+#define lengthofParm 50
+void getvalueFromsender(char *valuefromsender_get, float *tempValue);
 
-void ReadData()
+void ReadData(char *DatafromConsole)
 {
         if(DatafromConsole!=NULL)
         {
-               // scanf("%s",DatafromConsole);
-                printf("Hello/n");
+		    scanf("%s",DatafromConsole);
+		    i = strtod(DatafromConsole,NULL);
+  
+		    DatafromConsole[i] = '\n';
+		    DatafromConsole[i + 1] = '\0';
+		    printf("DatafromConsole = %f\n", DatafromConsole); 
                       
         }
         while (fgets(data, 500, stdin))
@@ -29,6 +32,22 @@ void ReadData()
       		flag = strtok(NULL, "/n");
    	}
     }
+}
+
+void getvalueFromsender(char *_getvalue, float *Value_)
+{
+  int i = 0, j = 0; 
+  char par[lengthofParm]; 
+  int parNum = 0;  //count of parameters
+    for (j = 0;_getvalue[i] != NULL;j++, i++)
+    {
+    par[j] = _getvalue[i];
+    par[j] = '\0'; 
+    }
+    /* Convert string to float number to evaluate further */
+    Value_[parNum] = atof(par);
+    printf("Paramter value = %f\n", Value_[parNum]); 
+
 }
                       
  int main()
