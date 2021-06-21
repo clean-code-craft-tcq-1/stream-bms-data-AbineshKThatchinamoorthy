@@ -23,7 +23,7 @@
 #include <math.h>
 /* ******************************function definition************************************ */
 
-void ReadData(char *DatafromConsole);
+bool ReadData(char *DatafromConsole);
 
 
 #endif
