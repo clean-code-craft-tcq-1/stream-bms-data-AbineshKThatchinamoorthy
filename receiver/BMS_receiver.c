@@ -3,11 +3,11 @@
 
 #define datalen 50
 
-#define TemperatureMax  45.f
-#define TemperatureMin  0.f
+#define TEMPMAX  45.f
+#define TEMPMIN  0.f
 
-#define SocMAX  0.8f
-#define SOcMin  0.f
+#define SOCMAX  0.8f
+#define SOCMIN  0.f
 
 typedef enum Entity
 {
@@ -30,8 +30,8 @@ bool ReadData(char *DatafromConsole)
   
 		    DatafromConsole[i] = '\n';
 		    DatafromConsole[i + 1] = '\0';
-		    printf("DatafromConsole = %f\n", DatafromConsole); 
-		return true
+		    printf("DatafromConsole = %s\n", DatafromConsole); 
+		return true;
                       
         }
         return false;
@@ -56,8 +56,8 @@ void GetValue(char *_getvalue, float *Value_)
 void _ReadReceiver()
 {
   char DatafromConsole[datalen];
-  float paramMin[datalen] = {TemperatureMin, SocMin};
-  float paramMax[datalen] = {TemperatureMax,SocMAX };
+  float paramMin[datalen] = {TEMPMIN, SOCMIN};
+  float paramMax[datalen] = {TEMPMAX,SOCMAX };
   int paramSetCounter = 0;
   /* Reading the input stream */
   for (paramSetCounter; paramSetCounter < datalen; paramSetCounter++) {
