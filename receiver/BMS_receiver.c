@@ -6,6 +6,7 @@ void getvalueFromsender(char *valuefromsender_get, float *tempValue);
 
 void ReadData(char *DatafromConsole)
 {
+	int i=0;
         if(DatafromConsole!=NULL)
         {
 		    scanf("%s",DatafromConsole);
@@ -16,23 +17,8 @@ void ReadData(char *DatafromConsole)
 		    printf("DatafromConsole = %f\n", DatafromConsole); 
                       
         }
-        while (fgets(data, 500, stdin))
-   {
-	char * flag = strtok(data, "/n");
-   	while( flag != NULL ) 
-	{
-		if(isdigit(*flag))
-		{
-			if(i<10)	
-				array_temp[i] = atoi(flag);
-			else
-				array_soc[i] = atoi(flag);
-			i++;
-		}	
-      		flag = strtok(NULL, "/n");
-   	}
-    }
-}
+        
+   }
 
 void getvalueFromsender(char *_getvalue, float *Value_)
 {
