@@ -16,7 +16,11 @@
 
 /* ******************************Inclusions************************************ */
 #include <stdio.h>
-
+#include<stdlib.h>
+#include <time.h>
+#include <stdbool.h>
+#include <string.h>
+#include <math.h>
 /* ******************************function definition************************************ */
 
 void ReadData(char *DatafromConsole);
