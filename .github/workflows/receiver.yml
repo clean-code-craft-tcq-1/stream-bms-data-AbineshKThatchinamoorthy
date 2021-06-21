@@ -1,4 +1,4 @@
-name: Build and Run Receiver
+name: Build_Run_RX
 
 on: [push, pull_request]
 
@@ -15,7 +15,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y gcovr
     - name: build
-      run: gcc -DMAIN -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker ./receiver/*.c*
+      run: gcc -DMAIN -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker ./Receiver/*.c*
       
     - name: run
       run: ./testchecker
