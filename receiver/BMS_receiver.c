@@ -7,9 +7,14 @@ void ReadData(char *DatafromConsole)
         if(DatafromConsole!=NULL)
         {
                 scanf("%s",DatafromConsole);
+                printf("Hello/n");
                       
         }
 }
                       
  int main()
- {return 0;}
+ {
+         char *s = "hello receiver";
+         ReadData(s);
+         return 0;
+ }
