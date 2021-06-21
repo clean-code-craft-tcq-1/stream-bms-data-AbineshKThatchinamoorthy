@@ -6,7 +6,7 @@ void ReadData(char *DatafromConsole)
 {
         if(DatafromConsole!=NULL)
         {
-                scanf(%s",DatafromConsole);
+                scanf("%s",DatafromConsole);
                       
         }
 }
