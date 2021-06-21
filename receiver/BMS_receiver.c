@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 #define lengthofParm 50
-void getvalueFromsender(char *valuefromsender_get, float *tempValue);
+void GetValue(char *valuefromsender_get, float *tempValue);
 
 void ReadData(char *DatafromConsole)
 {
@@ -20,7 +20,7 @@ void ReadData(char *DatafromConsole)
         
    }
 
-void getvalueFromsender(char *_getvalue, float *Value_)
+void GetValue(char *_getvalue, float *Value_)
 {
   int i = 0, j = 0; 
   char par[lengthofParm]; 
