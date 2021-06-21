@@ -3,12 +3,24 @@
 
 #define datalen 50
 
+#define TemperatureMax  45.f
+#define TemperatureMin  0.f
+
+#define SocMAX  0.8f
+#define SOcMin  0.f
+
+typedef enum Entity
+{
+  Temperature,
+  SOC
+}Entity;
+
 void GetValue(char *valuefromsender_get, float *tempValue);
 void calculateMinValue(float *paramValue, float *paramValueMin);
-void calculateMaxValue(float *paramValue, float *paramValueMax);'
+void calculateMaxValue(float *paramValue, float *paramValueMax);
 void _ReadReceiver();
 
-void ReadData(char *DatafromConsole)
+bool ReadData(char *DatafromConsole)
 {
 	int i=0;
         if(DatafromConsole!=NULL)
@@ -19,15 +31,16 @@ void ReadData(char *DatafromConsole)
 		    DatafromConsole[i] = '\n';
 		    DatafromConsole[i + 1] = '\0';
 		    printf("DatafromConsole = %f\n", DatafromConsole); 
+		return true
                       
         }
-        
+        return false;
    }
 
 void GetValue(char *_getvalue, float *Value_)
 {
   int i = 0, j = 0; 
-  char par[lengthofParm]; 
+  char par[datalen]; 
   int parNum = 0;  //count of parameters
     for (j = 0;_getvalue[i] != NULL;j++, i++)
     {
@@ -47,7 +60,7 @@ void _ReadReceiver()
   float paramMax[datalen] = {TemperatureMax,SocMAX };
   int paramSetCounter = 0;
   /* Reading the input stream */
-  for (paramSetCounter; paramSetCounter < NoOfParamterSet; paramSetCounter++) {
+  for (paramSetCounter; paramSetCounter < datalen; paramSetCounter++) {
     
     /* Read one input set if the read is successful process parameters further*/
     bool IsOk = ReadData(DatafromConsole);
@@ -88,6 +101,6 @@ void calculateMaxValue(float *paramValue, float *paramValueMax) {
 }                      
  int main()
  {
-        
+        _ReadReceiver();
          return 0;
  }
