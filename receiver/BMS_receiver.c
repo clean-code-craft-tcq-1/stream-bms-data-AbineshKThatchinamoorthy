@@ -15,9 +15,9 @@ typedef enum Entity
   SOC
 }Entity;
 
-void GetValue(char *valuefromsender_get, float *tempValue);
-void calculateMinValue(float *paramValue, float *paramValueMin);
-void calculateMaxValue(float *paramValue, float *paramValueMax);
+void GetValue(char *_getvalue, float *Value_);
+void FindMinVal(float *Val_rx, float *MinVal);
+void FindMaxVal(float *Val_rx, float *MaxVal);
 void _ReadReceiver();
 
 bool ReadData(char *DatafromConsole)
@@ -82,21 +82,21 @@ void _ReadReceiver()
   
 }
 
-void calculateMinValue(float *paramValue, float *paramValueMin) {
+void FindMinVal(float *Val_rx, float *MinVal) {
    
    
-    if (*paramValueMin > *paramValue)
+    if (*MinVal > *Val_rx)
     {
-      *paramValueMin = *paramValue;
+      *MinVal = *Val_rx;
 
     }
 }
 
-void calculateMaxValue(float *paramValue, float *paramValueMax) {
+void FindMaxVal(float *Val_rx, float *MaxVal) {
  
-  if (*paramValueMax < *paramValue)
+  if (*MaxVal < *Val_rx)
   {
-    *paramValueMax = *paramValue;
+    *MaxVal = *Val_rx;
   }
 }                      
  int main()
