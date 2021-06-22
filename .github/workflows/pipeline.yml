@@ -1,4 +1,4 @@
-name: Send data using pipe
+name: Pipelining
 
 on: [push, pull_request]
 
