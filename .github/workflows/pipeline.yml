@@ -1,0 +1,22 @@
+name: Pipelining
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: build
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker ./BMS_Sender/*.c*   
+      
+    - name: Build receiver
+      run: gcc -DMAIN -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker1 ./receiver/*.c
+      
+    - name : pipeline
+      run: |
+         g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker ./BMS_Sender/*.c*   
+         gcc -DMAIN -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker1 ./receiver/*.c
