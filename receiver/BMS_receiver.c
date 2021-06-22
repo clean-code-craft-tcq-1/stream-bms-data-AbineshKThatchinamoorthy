@@ -56,11 +56,11 @@ void GetValue(char *_getvalue, float *Value_)
 void _ReadReceiver()
 {
   char DatafromConsole[datalen];
-  float paramMin[datalen] = {TEMPMIN, SOCMIN};
-  float paramMax[datalen] = {TEMPMAX,SOCMAX };
-  int paramSetCounter = 0;
+  float MinVal[datalen] = {TEMPMIN, SOCMIN};
+  float MaxVal[datalen] = {TEMPMAX,SOCMAX };
+  int Counter = 0;
   /* Reading the input stream */
-  for (paramSetCounter; paramSetCounter < datalen; paramSetCounter++) {
+  for (Counter = 0; Counter < datalen; Counter++) {
     
     /* Read one input set if the read is successful process parameters further*/
     bool IsOk = ReadData(DatafromConsole);
@@ -70,12 +70,12 @@ void _ReadReceiver()
       float Value_[datalen] ;
       GetValue(DatafromConsole, Value_);
      
-      for (int parameterCount = 0; parameterCount< datalen; parameterCount++) {
-        calculateMinValue(&Value_[parameterCount], &paramMin[parameterCount]);
-        calculateMaxValue(&Value_[parameterCount], &paramMax[parameterCount]);
+      for (int Countparam = 0; Countparam< datalen; Countparam++) {
+        FindMinVal(&Value_[Countparam], &MinVal[Countparam]);
+        FindMaxVal(&Value_[Countparam], &MaxVal[Countparam]);
     }
-      printf(" Minumum Temperature : %f, Minimum SOC : %f \n ", paramMin[Temperature], paramMin[SOC]);
-      printf(" Maximum Temperature : %f, Maximum SOC : %f \n ", paramMax[Temperature], paramMax[SOC]);
+      printf(" Minumum Temperature : %f, Minimum SOC : %f \n ", MinVal[Temperature], MinVal[SOC]);
+      printf(" Maximum Temperature : %f, Maximum SOC : %f \n ", MaxVal[Temperature], MaxVal[SOC]);
     }
 
   }
