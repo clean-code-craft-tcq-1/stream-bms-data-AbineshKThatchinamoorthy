@@ -21,8 +21,29 @@
 #include <stdbool.h>
 #include <string.h>
 #include <math.h>
-/* ******************************function definition************************************ */
 
+#define datalen 50
+/* ******************************Macros************************************ */
+
+#define TEMPMAX  45.0f
+#define TEMPMIN  0.0f
+
+#define SOCMAX  0.8f
+#define SOCMIN  0.0f
+
+/* ******************************Enumerations************************************ */
+
+typedef enum Entity
+{
+  Temperature,
+  SOC
+}Entity;
+/* ******************************Function Declarations************************************ */
+
+void GetValue(char *_getvalue, float *Value_);
+void FindMinVal(float *Val_rx, float *MinVal);
+void FindMaxVal(float *Val_rx, float *MaxVal);
+void _ReadReceiver();
 bool ReadData(char *DatafromConsole);
 
 
